@@ -7,10 +7,6 @@
 
 .Card {
   position: relative;
-  box-shadow: 2px 1px 3px black;
-  //border-left: 1em solid black;
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  padding: 20px;
 }
 
 .Input {
@@ -36,4 +32,11 @@
 .Center {
   display: flex;
   justify-content: center;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 300px;
 }

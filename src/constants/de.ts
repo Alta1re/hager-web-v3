@@ -21,5 +21,13 @@ export const de = {
     TRY_AGAIN_LATER: "Bitte versuche es später wieder.",
     SOMETHING_WRONG: "Etwas ist schief gelaufen.",
     NAME: "Name",
+    LOGIN: "Einloggen",
+    SIGNUP: "Registrieren",
+    AUTH: "Authentifizierung",
+    MAPS: "Karten",
+    CLICK_ON_MAP: "Klicke auf die Karte um Wegpunkte zu setzen.",
+    WAYPOINTS: "Wegpunkte",
+    POS: "Pos.",
+    DISTANCE: "Strecke",
   },
 };

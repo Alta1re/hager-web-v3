@@ -144,164 +144,160 @@ export default function SignUp(props: SignupProps) {
   };
 
   return (
-    <Grid className={classes.Container} container>
-      <Grid item xs={12} md={12} className={classes.Center}>
-        <Card className={classes.Card}>
-          <CardHeader title="Signup" />
+    <Card className={classes.Card}>
+      <CardHeader
+        title="Signup"
+        titleTypographyProps={{ textAlign: "center" }}
+      />
 
-          <CardContent>
-            <Box
-              component="form"
-              sx={{
-                "& > :not(style)": { m: 1, width: "25ch" },
-                display: "flex",
-                flexDirection: "column",
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <TextField
-                className={classes.Input}
-                id="name-input"
-                label={t("NAME")}
-                variant="outlined"
-                InputProps={{
-                  type: "name",
-                  autoComplete: "name",
-                  role: "name-input",
-                }}
-                color={
-                  nameValid
-                    ? "success"
-                    : nameValid === undefined
-                    ? "primary"
-                    : "error"
-                }
-                onChange={(event) => onChangeNameHandler(event.target.value)}
-                value={name}
-              />
-              <TextField
-                className={classes.Input}
-                id="email-input"
-                label={t("EMAIL")}
-                variant="outlined"
-                InputProps={{ type: "email", autoComplete: "email" }}
-                color={
-                  emailValid
-                    ? "success"
-                    : emailValid === undefined
-                    ? "primary"
-                    : "error"
-                }
-                onChange={(event) => onChangeEmailHandler(event.target.value)}
-                value={email}
-              />
-              <TextField
-                className={classes.Input}
-                id="password-input"
-                label={t("PASSWORD")}
-                variant="outlined"
-                InputProps={{ type: "password", autoComplete: "new-password" }}
-                onChange={(event) =>
-                  onChangePasswordHandler(event.target.value)
-                }
-                value={password}
-                color={
-                  passwordValid
-                    ? "success"
-                    : passwordValid === undefined
-                    ? "primary"
-                    : "error"
-                }
-              />
-              <div className={classes.ValidationCard}>
-                {!passwordValid && password.length > 0 && (
-                  <>
-                    <Typography variant="caption">
-                      {t("PASSWORD_MUST_HAVE")}
-                    </Typography>
-                    <ul className={classes.ValidationList}>
-                      {passwordHasLength ? null : (
-                        <li>
-                          <Typography variant="caption">
-                            {t("PASS_CHARS")}
-                          </Typography>
-                        </li>
-                      )}
-                      {passwordHasLowerCase ? null : (
-                        <li>
-                          <Typography variant="caption">
-                            {t("LOWER_CASE")}
-                          </Typography>
-                        </li>
-                      )}
-                      {passwordHasUpperCase ? null : (
-                        <li>
-                          <Typography variant="caption">
-                            {t("UPPER_CASE")}
-                          </Typography>
-                        </li>
-                      )}
-                      {passwordHasDigit ? null : (
-                        <li>
-                          <Typography variant="caption">
-                            {t("DIGIT")}
-                          </Typography>
-                        </li>
-                      )}
-                      {passwordHasSpecial ? null : (
-                        <li>
-                          <Typography variant="caption">
-                            {t("SPECIAL_CHAR")}
-                          </Typography>
-                        </li>
-                      )}
-                    </ul>
-                  </>
-                )}
-              </div>
-              <TextField
-                className={classes.Input}
-                id="confirm-password-input"
-                label={t("CONFIRM_PASSWORD")}
-                variant="outlined"
-                InputProps={{ type: "password", autoComplete: "new-password" }}
-                onChange={(event) =>
-                  onChangeConfirmPasswordHandler(event.target.value)
-                }
-                value={confirmPassword}
-                color={
-                  confirmPasswordValid
-                    ? "success"
-                    : confirmPasswordValid === undefined
-                    ? "primary"
-                    : "error"
-                }
-              />
-            </Box>
-            {termsLink !== "" && (
-              <Typography variant="caption">
-                {t("VIEW_OUR")}
-                <a href={termsLink}>{t("TERMS_OF_SERVICE")}</a>
-              </Typography>
-            )}
-          </CardContent>
-          <CardActions
-            sx={{
-              display: "flex",
-              justifyContent: "center",
+      <CardContent>
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1, width: "25ch" },
+            display: "flex",
+            flexDirection: "column",
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            className={classes.Input}
+            id="name-input"
+            label={t("NAME")}
+            variant="outlined"
+            InputProps={{
+              type: "name",
+              autoComplete: "name",
+              role: "name-input",
             }}
-          >
-            <Button
-              color="secondary"
-              onClick={onSubmitHandler}
-              disabled={!emailValid || !passwordValid || !confirmPasswordValid}
-            >
-              {t("SUBMIT")}
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
-    </Grid>
+            color={
+              nameValid
+                ? "success"
+                : nameValid === undefined
+                ? "primary"
+                : "error"
+            }
+            onChange={(event) => onChangeNameHandler(event.target.value)}
+            value={name}
+          />
+          <TextField
+            className={classes.Input}
+            id="email-input"
+            label={t("EMAIL")}
+            variant="outlined"
+            InputProps={{ type: "email", autoComplete: "email" }}
+            color={
+              emailValid
+                ? "success"
+                : emailValid === undefined
+                ? "primary"
+                : "error"
+            }
+            onChange={(event) => onChangeEmailHandler(event.target.value)}
+            value={email}
+          />
+          <TextField
+            className={classes.Input}
+            id="password-input"
+            label={t("PASSWORD")}
+            variant="outlined"
+            InputProps={{ type: "password", autoComplete: "new-password" }}
+            onChange={(event) => onChangePasswordHandler(event.target.value)}
+            value={password}
+            color={
+              passwordValid
+                ? "success"
+                : passwordValid === undefined
+                ? "primary"
+                : "error"
+            }
+          />
+          <div className={classes.ValidationCard}>
+            {!passwordValid && password.length > 0 && (
+              <>
+                <Typography variant="caption">
+                  {t("PASSWORD_MUST_HAVE")}
+                </Typography>
+                <ul className={classes.ValidationList}>
+                  {passwordHasLength ? null : (
+                    <li>
+                      <Typography variant="caption">
+                        {t("PASS_CHARS")}
+                      </Typography>
+                    </li>
+                  )}
+                  {passwordHasLowerCase ? null : (
+                    <li>
+                      <Typography variant="caption">
+                        {t("LOWER_CASE")}
+                      </Typography>
+                    </li>
+                  )}
+                  {passwordHasUpperCase ? null : (
+                    <li>
+                      <Typography variant="caption">
+                        {t("UPPER_CASE")}
+                      </Typography>
+                    </li>
+                  )}
+                  {passwordHasDigit ? null : (
+                    <li>
+                      <Typography variant="caption">{t("DIGIT")}</Typography>
+                    </li>
+                  )}
+                  {passwordHasSpecial ? null : (
+                    <li>
+                      <Typography variant="caption">
+                        {t("SPECIAL_CHAR")}
+                      </Typography>
+                    </li>
+                  )}
+                </ul>
+              </>
+            )}
+          </div>
+          <TextField
+            className={classes.Input}
+            id="confirm-password-input"
+            label={t("CONFIRM_PASSWORD")}
+            variant="outlined"
+            InputProps={{ type: "password", autoComplete: "new-password" }}
+            onChange={(event) =>
+              onChangeConfirmPasswordHandler(event.target.value)
+            }
+            value={confirmPassword}
+            color={
+              confirmPasswordValid
+                ? "success"
+                : confirmPasswordValid === undefined
+                ? "primary"
+                : "error"
+            }
+          />
+        </Box>
+        {termsLink !== "" && (
+          <Typography variant="caption">
+            {t("VIEW_OUR")}
+            <a href={termsLink}>{t("TERMS_OF_SERVICE")}</a>
+          </Typography>
+        )}
+      </CardContent>
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Button
+          sx={{ marginTop: "0px" }}
+          color="secondary"
+          onClick={onSubmitHandler}
+          disabled={!emailValid || !passwordValid || !confirmPasswordValid}
+        >
+          {t("SUBMIT")}
+        </Button>
+      </CardActions>
+    </Card>
   );
 }

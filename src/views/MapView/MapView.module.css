@@ -8,31 +8,27 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  min-height: 100vh;
   background-image: url("assets/images/backgrounds/biometrics_1920.jpg");
   background-position: center;
   background-size: cover;
-  height: 100vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
-.DialogContent {
+.MapContainer {
+  width: 100%;
+  height: 500px;
+}
+
+.ItemContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: transparent;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
-
-.ButtonContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  width: 60%;
-}
-/*# sourceMappingURL=Auth.module.css.map */
+/*# sourceMappingURL=MapView.module.css.map */
