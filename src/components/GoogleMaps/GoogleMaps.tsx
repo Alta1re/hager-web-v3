@@ -5,6 +5,7 @@ import {
   Marker,
   DirectionsService,
   DirectionsRenderer,
+  Polyline,
 } from "@react-google-maps/api";
 
 import CircularProgress from "@mui/material/CircularProgress";
@@ -13,16 +14,29 @@ import classes from "./GoogleMaps.module.css";
 
 const GOOGLE_MAPS_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
+const polylineOptions = {
+  strokeColor: "#FF0000",
+  strokeOpacity: 0.8,
+  strokeWeight: 5,
+  fillColor: "#FF0000",
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 30000,
+  zIndex: 1,
+};
+
+type Coords = google.maps.LatLng | google.maps.LatLngLiteral;
 interface IMapProps {
-  onPickedAddress: (
-    coordinates: google.maps.LatLng | google.maps.LatLngLiteral,
-    index: number
-  ) => void;
-  pickedCoords: Array<google.maps.LatLng | google.maps.LatLngLiteral>;
+  onPickedAddress: (coordinates: Coords, index: number) => void;
+  pickedCoords: Array<Coords>;
   setDistance: (distance: string) => void;
 }
 
 const GoogleMaps = (props: IMapProps) => {
+  const { setDistance, onPickedAddress, pickedCoords } = props;
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAPS_KEY!, // ,
     // ...otherOptions
@@ -34,12 +48,21 @@ const GoogleMaps = (props: IMapProps) => {
   const [waypoints, setWaypoints] = useState<
     Array<google.maps.DirectionsWaypoint> | undefined
   >(undefined);
-  const [origin, setOrigin] = useState<
-    google.maps.LatLng | google.maps.LatLngLiteral | undefined
+  const [origin, setOrigin] = useState<Coords | undefined>(undefined);
+  const [destination, setDestination] = useState<Coords | undefined>(undefined);
+  const [path, setPath] = useState<
+    google.maps.LatLng[] | google.maps.LatLngLiteral[] | undefined
   >(undefined);
-  const [destination, setDestination] = useState<
-    google.maps.LatLng | google.maps.LatLngLiteral | undefined
-  >(undefined);
+  const [directionsService, setDirectionsService] = useState<
+    google.maps.DirectionsService | undefined
+  >();
+
+  useEffect(() => {
+    if (isLoaded && !directionsService) {
+      const dS = new google.maps.DirectionsService();
+      setDirectionsService(dS);
+    }
+  }, [isLoaded, directionsService]);
 
   const markerRefs = useRef();
   const mapRef = useRef();
@@ -117,9 +140,8 @@ const GoogleMaps = (props: IMapProps) => {
   };
 
   useEffect(() => {
-    setDirectionsUpdated(false);
-    if (props.pickedCoords.length > 2) {
-      const newWaypoints = [...props.pickedCoords];
+    if (pickedCoords.length > 2) {
+      const newWaypoints = [...pickedCoords];
       const dest = newWaypoints.pop();
       const start = newWaypoints.shift();
       const transformedWaypoints = newWaypoints.map((waypoint) => {
@@ -128,45 +150,78 @@ const GoogleMaps = (props: IMapProps) => {
       setWaypoints(transformedWaypoints);
       setOrigin(start);
       setDestination(dest);
-    } else if (props.pickedCoords.length === 2) {
-      setOrigin(props.pickedCoords[0]);
-      setDestination(props.pickedCoords[1]);
+    } else if (pickedCoords.length === 2) {
+      setOrigin(pickedCoords[0]);
+      setDestination(pickedCoords[1]);
+      setWaypoints(undefined);
     }
-  }, [props.pickedCoords]);
+  }, [pickedCoords]);
 
   const onMapClickHandler = (e: google.maps.MapMouseEvent) => {
-    e.latLng && props.onPickedAddress(e.latLng, props.pickedCoords.length);
-    console.log("MAP_MOUSE_EVENT", e.latLng);
+    e.latLng && onPickedAddress(e.latLng, pickedCoords.length);
     setDirections(null);
-    setDirectionsUpdated(false);
   };
 
   const onMapChangedHandler = () => {
     //console.log("MAP_CHANGED: ", mapRef.current);
   };
 
-  const onDirectionsReceivedHandler = (
-    response: google.maps.DirectionsResult | null
-  ) => {
-    setDirections(response);
-    setDirectionsUpdated(true);
-    if (response) {
-      let sumDist = 0;
-      response.routes[0].legs.forEach((leg) => {
-        if (leg.distance) sumDist += leg.distance?.value;
-      });
-      const newDistance =
-        sumDist > 1000 ? (sumDist / 1000).toFixed(1) + " km" : sumDist + " m";
-      props.setDistance(newDistance);
-    }
-  };
+  const onDirectionsReceivedHandler = useCallback(
+    (response: google.maps.DirectionsResult | null) => {
+      setDirections(response);
+      if (response) {
+        setPath(response.routes[0].overview_path);
+        let sumDist = 0;
+        response.routes[0].legs.forEach((leg) => {
+          if (leg.distance) sumDist += leg.distance?.value;
+        });
+        const newDistance =
+          sumDist > 1000 ? (sumDist / 1000).toFixed(1) + " km" : sumDist + " m";
+        setDistance(newDistance);
+      }
+    },
+    [setDistance]
+  );
 
   const markers =
-    props.pickedCoords.length === 1
-      ? props.pickedCoords.map((coord, index) => {
-          return <Marker key={"marker" + index} position={coord} />;
+    pickedCoords.length >= 1
+      ? pickedCoords.map((coord, index) => {
+          return (
+            <Marker
+              key={"marker" + index}
+              position={coord}
+              label={(index + 1).toString()}
+              title="Click me"
+            />
+          );
         })
       : null;
+
+  useEffect(() => {
+    if (destination && origin && directionsService) {
+      directionsService.route(
+        {
+          destination: destination,
+          origin: origin,
+          waypoints: waypoints,
+          travelMode: google.maps.TravelMode.DRIVING,
+          provideRouteAlternatives: false,
+          optimizeWaypoints: false,
+        },
+        (result, status) => {
+          if (status === "OK") {
+            onDirectionsReceivedHandler(result);
+          }
+        }
+      );
+    }
+  }, [
+    origin,
+    destination,
+    directionsService,
+    waypoints,
+    onDirectionsReceivedHandler,
+  ]);
 
   const renderMap = () => {
     // wrapping to a function is useful in case you want to access `window.google`
@@ -188,57 +243,8 @@ const GoogleMaps = (props: IMapProps) => {
         onCenterChanged={onMapChangedHandler}
       >
         {markers}
-        {origin && destination && !directionsUpdated && (
-          <DirectionsService
-            // required
-            options={{
-              destination: destination,
-              origin: origin,
-              waypoints: waypoints,
-              travelMode: google.maps.TravelMode.WALKING,
-              provideRouteAlternatives: false,
-              optimizeWaypoints: true,
-            }}
-            // required
-            callback={onDirectionsReceivedHandler}
-            // optional
-            onLoad={(directionsService) => {
-              console.log(
-                "DirectionsService onLoad directionsService: ",
-                directionsService
-              );
-            }}
-            // optional
-            onUnmount={(directionsService) => {
-              console.log(
-                "DirectionsService onUnmount directionsService: ",
-                directionsService
-              );
-            }}
-          />
-        )}
-        {directions && (
-          <DirectionsRenderer
-            // required
-            options={{
-              directions: directions,
-            }}
-            // optional
-            onLoad={(directionsRenderer) => {
-              console.log(
-                "DirectionsRenderer onLoad directionsRenderer: ",
-                directionsRenderer
-              );
-            }}
-            // optional
-            onUnmount={(directionsRenderer) => {
-              console.log(
-                "DirectionsRenderer onUnmount directionsRenderer: ",
-                directionsRenderer
-              );
-            }}
-          />
-        )}
+
+        {path && <Polyline path={path} options={polylineOptions} />}
       </GoogleMap>
     );
   };

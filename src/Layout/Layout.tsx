@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "views/Auth/Auth";
 import MapView from "views/MapView/MapView";
 import Drawer from "components/Drawer/Drawer";
+import Welcome from "views/Welcome/Welcome";
 
 const Layout = () => {
   return (
@@ -13,7 +14,7 @@ const Layout = () => {
         <Routes>
           <Route path="/maps" element={<MapView />} />
           <Route path="/auth" element={<Auth />} />
-          <Route path="/" element={<Auth />} />
+          <Route path="/" element={<Welcome />} />
         </Routes>
       </BrowserRouter>
     </div>

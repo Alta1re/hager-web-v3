@@ -29,5 +29,18 @@ export const en = {
     WAYPOINTS: "Waypoints",
     POS: "Pos.",
     DISTANCE: "Distance",
+    HOME: "Home",
+    MAP_VIEW: "Maps",
+    WELCOME: "Welcome to hager-web.com",
+    APP_DEV: "Appdevelopement",
+    WE_DEV_APPS: "We develop apps for web and mobile",
+    ABOUT_ME:
+      "My name is Sven Hager, freelance, self-employed, web/app developer since October 2018. As a learnaholic, I always keep myself up to date and, as far as possible and desired, always develop according to the current state of the art. With my extensive knowledge and experience in the Javascript/Typescript based front- and backend area, I am happy to support you with up to 20 hours per week.",
+    SKILLS:
+      "My focus is on the so-called MERN stack, i.e. MongoDB, ExpressJS, ReactJS and NodeJS. Also, for native iOS and Android apps: React-Native. The common tools such as Redux(Toolkit), React-Router, Axios, i18n, google-maps-api, ..., are of course also part of my daily companions.",
+    MORE_SKILLS:
+      "Additionally, I have first experiences in unit testing with React-Testing-Library and Jest and am currently expanding my experiences in Test-Driven-Development (TDD).",
+    DRAWER_MENU:
+      "Via the drawer menu you can navigate to further pages, where you will find some examples of my already (repeatedly) implemented features.",
   },
 };

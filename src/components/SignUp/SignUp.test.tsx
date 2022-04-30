@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SignUp from "./SignUp";
 
@@ -14,8 +14,8 @@ test("inputs should be initially empty", () => {
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   expect((nameField as HTMLInputElement).value).toBe("");
   expect((emailField as HTMLInputElement).value).toBe("");
@@ -30,8 +30,8 @@ test("SubmitButton should be disabled when email invalid", async () => {
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -61,8 +61,8 @@ test("SubmitButton should be disabled when password has no number", async () => 
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -92,8 +92,8 @@ test("SubmitButton should be disabled when password has no special-char", async 
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -123,8 +123,8 @@ test("SubmitButton should be disabled when password has no upper-case-letter", a
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -154,8 +154,8 @@ test("SubmitButton should be disabled when password has no lower-case-letter", a
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -185,8 +185,8 @@ test("SubmitButton should be disabled when password has less than 8 chars", asyn
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -216,8 +216,8 @@ test("SubmitButton should be disabled when passwords doesn´t match", async () =
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -247,8 +247,8 @@ test("SubmitButton should not be disabled when all fields valid", async () => {
   );
   const nameField = queryByRole("textbox", { name: /name/i });
   const emailField = queryByRole("textbox", { name: /email/i });
-  const passwordField = queryByLabelText("password");
-  const passwordConfirmField = queryByLabelText("confirm-password");
+  const passwordField = queryByLabelText("Password");
+  const passwordConfirmField = queryByLabelText("Confirm-password");
 
   if (nameField) {
     await user.click(nameField);
@@ -288,7 +288,7 @@ test("should be able to type in email field", async () => {
 test("should be able to type in password field", async () => {
   const user = userEvent.setup();
   const { getByLabelText } = render(<SignUp onSubmit={() => {}} />);
-  const passwordTextBox = getByLabelText("password");
+  const passwordTextBox = getByLabelText("Password");
   if (passwordTextBox) {
     await user.click(passwordTextBox);
     await user.keyboard("Password1!");
@@ -301,7 +301,7 @@ test("should be able to type in password-confirmation field", async () => {
   const { getByLabelText } = render(
     <SignUp onSubmit={(obj) => console.log(obj)} />
   );
-  const passwordTextBox = getByLabelText("confirm-password");
+  const passwordTextBox = getByLabelText("Confirm-password");
   if (passwordTextBox) {
     await user.click(passwordTextBox);
     await user.keyboard("Password1!");

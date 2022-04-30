@@ -20,6 +20,7 @@ import Typography from "@mui/material/Typography";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import MapIcon from "@mui/icons-material/Map";
 import PersonIcon from "@mui/icons-material/Person";
+import HomeIcon from "@mui/icons-material/Home";
 
 // custom components
 import BurgerButton from "components/CustomButtons/BurgerButton";
@@ -69,10 +70,10 @@ export default function Drawer() {
       <List>
         <ListItem button>
           <ListItemIcon>
-            <MapIcon />
+            <HomeIcon />
           </ListItemIcon>
-          <Link className={classes.Link} to="/maps">
-            {t("MAPS")}
+          <Link className={classes.Link} to="/">
+            {t("HOME")}
           </Link>
         </ListItem>
         <ListItem button>
@@ -81,6 +82,14 @@ export default function Drawer() {
           </ListItemIcon>
           <Link className={classes.Link} to="/auth">
             {t("AUTH")}
+          </Link>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <MapIcon />
+          </ListItemIcon>
+          <Link className={classes.Link} to="/maps">
+            {t("MAPS")}
           </Link>
         </ListItem>
       </List>

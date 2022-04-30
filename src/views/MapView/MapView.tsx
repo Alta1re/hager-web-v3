@@ -112,7 +112,25 @@ const MapView = () => {
 
   return (
     <div className={classes.Container}>
-      <Grid container justifyContent="space-around" rowSpacing={5}>
+      <Paper className={classes.Blender} />
+      <Grid
+        container
+        justifyContent="space-around"
+        rowSpacing={5}
+        sx={{ zIndex: 2 }}
+      >
+        <Grid item xs={12}>
+          <Typography
+            sx={{
+              fontFamily: "Charmonman-bold",
+              textShadow: "1px 1px 1px black",
+            }}
+            color="#ffffff"
+            variant="h1"
+          >
+            {t("MAP_VIEW")}
+          </Typography>
+        </Grid>
         <Grid item xs={12} md={10} lg={6}>
           <Card>
             <CardHeader
