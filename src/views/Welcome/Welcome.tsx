@@ -2,6 +2,13 @@ import React from "react";
 
 import { useTranslation } from "utils/i18n";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  solid,
+  regular,
+  brands,
+} from "@fortawesome/fontawesome-svg-core/import.macro";
+
 // material-ui components
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
@@ -10,8 +17,10 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 import mePortrait from "assets/images/portraits/me_portrait.jpg";
+import tsLogo from "assets/icons/ts-logo-128.svg";
 
 import classes from "./Welcome.module.css";
 
@@ -83,6 +92,35 @@ const Welcome = () => {
                   <Typography align="left" variant="h6">
                     {t("DRAWER_MENU")}
                   </Typography>
+
+                  <div className={classes.Logos}>
+                    <FontAwesomeIcon
+                      icon={brands("css3")}
+                      size="6x"
+                      color="#2965f1"
+                    />
+                    <FontAwesomeIcon
+                      icon={brands("html5")}
+                      size="6x"
+                      color="#f06529"
+                    />
+                    <FontAwesomeIcon
+                      icon={brands("react")}
+                      size="6x"
+                      color="#61DBFB"
+                    />
+                    <FontAwesomeIcon
+                      icon={brands("js")}
+                      size="6x"
+                      color="#f0db4f"
+                    />
+                    <img src={tsLogo} width="84px" alt="typescript-logo" />
+                    <FontAwesomeIcon
+                      icon={brands("node")}
+                      size="6x"
+                      color="#68a063"
+                    />
+                  </div>
                 </div>
               </div>
             </CardContent>

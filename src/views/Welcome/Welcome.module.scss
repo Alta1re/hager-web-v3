@@ -22,3 +22,9 @@
 .WelcomeContentContainer {
   display: flex;
 }
+
+.Logos {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
