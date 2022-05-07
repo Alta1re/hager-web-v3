@@ -3,8 +3,6 @@ import {
   GoogleMap,
   useJsApiLoader,
   Marker,
-  DirectionsService,
-  DirectionsRenderer,
   Polyline,
 } from "@react-google-maps/api";
 
@@ -41,10 +39,7 @@ const GoogleMaps = (props: IMapProps) => {
     googleMapsApiKey: GOOGLE_MAPS_KEY!, // ,
     // ...otherOptions
   });
-  const [directions, setDirections] =
-    useState<google.maps.DirectionsResult | null>(null);
-  const [directionsUpdated, setDirectionsUpdated] = useState<boolean>(false);
-  const [mapCenter, setMapCenter] = useState({ lat: 50.1, lng: 8.6 });
+  const [mapCenter] = useState({ lat: 50.1, lng: 8.6 });
   const [waypoints, setWaypoints] = useState<
     Array<google.maps.DirectionsWaypoint> | undefined
   >(undefined);
@@ -64,7 +59,6 @@ const GoogleMaps = (props: IMapProps) => {
     }
   }, [isLoaded, directionsService]);
 
-  const markerRefs = useRef();
   const mapRef = useRef();
 
   const options = isLoaded && {
@@ -159,7 +153,6 @@ const GoogleMaps = (props: IMapProps) => {
 
   const onMapClickHandler = (e: google.maps.MapMouseEvent) => {
     e.latLng && onPickedAddress(e.latLng, pickedCoords.length);
-    setDirections(null);
   };
 
   const onMapChangedHandler = () => {
@@ -168,7 +161,6 @@ const GoogleMaps = (props: IMapProps) => {
 
   const onDirectionsReceivedHandler = useCallback(
     (response: google.maps.DirectionsResult | null) => {
-      setDirections(response);
       if (response) {
         setPath(response.routes[0].overview_path);
         let sumDist = 0;

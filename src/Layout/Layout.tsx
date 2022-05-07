@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // view components
-import Auth from "views/Auth/Auth";
 import MapView from "views/MapView/MapView";
 import Welcome from "views/Welcome/Welcome";
 import Imprint from "views/Imprint/Imprint";
@@ -25,7 +24,6 @@ const Layout = () => {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/imprint" element={<Imprint />} />
           <Route path="/maps" element={<MapView />} />
-          <Route path="/auth" element={<Auth />} />
           <Route path="/" element={<Welcome />} />
         </Routes>
         <Footer />
