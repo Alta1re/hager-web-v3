@@ -1,24 +1,22 @@
 import React from "react";
 
+// i18n
 import { useTranslation } from "utils/i18n";
 
+// fontawesome icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  solid,
-  regular,
-  brands,
-} from "@fortawesome/fontawesome-svg-core/import.macro";
+import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 // material-ui components
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
+import Divider from "@mui/material/Divider";
 
+// images
 import mePortrait from "assets/images/portraits/me_portrait.jpg";
 import tsLogo from "assets/icons/ts-logo-128.svg";
 
@@ -83,15 +81,29 @@ const Welcome = () => {
                   <Typography align="left" variant="h6">
                     {t("ABOUT_ME")}
                   </Typography>
+                  <Divider />
                   <Typography align="left" variant="h6">
                     {t("SKILLS")}
                   </Typography>
+                  <Divider />
                   <Typography align="left" variant="h6">
                     {t("MORE_SKILLS")}
                   </Typography>
+                  <Divider />
                   <Typography align="left" variant="h6">
                     {t("DRAWER_MENU")}
                   </Typography>
+                  <Divider />
+                  <Typography align="left" variant="h6">
+                    {t("REPOSITORY")}
+                  </Typography>
+                  <a
+                    href="https://github.com/Alta1re/hager-web-v3.git"
+                    className={classes.GithubLink}
+                  >
+                    GitHub-Repository
+                  </a>
+                  <Divider />
 
                   <div className={classes.Logos}>
                     <FontAwesomeIcon

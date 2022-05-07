@@ -1,0 +1,15 @@
+.Container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-image: url("assets/images/backgrounds/wave-81840.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 70px;
+  padding-bottom: 250px;
+}
+/*# sourceMappingURL=References.module.css.map */

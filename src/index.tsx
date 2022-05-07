@@ -6,6 +6,9 @@ import { store } from "./store/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 
+// init firebase
+import "utils/firebase.ts";
+
 const container = document.getElementById("root");
 
 const root = createRoot(container!);

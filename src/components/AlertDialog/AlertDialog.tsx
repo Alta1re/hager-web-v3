@@ -28,7 +28,6 @@ export default function AlertDialog(props: AlertProps) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const closeDialogHandler = () => {
-    // do something
     dispatch(clearAlert());
   };
   return (

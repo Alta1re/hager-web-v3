@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,KAAK;EACrB,gBAAgB,EAAE,qFASjB;CACF;;AAED,AAAA,OAAO,CAAC;EACN,UAAU,EAAE,QAAQ;CACrB",
+    "sources": [
+        "Imprint.module.scss"
+    ],
+    "names": [],
+    "file": "Imprint.module.css"
+}

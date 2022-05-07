@@ -1,0 +1,51 @@
+.Container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 150px;
+  z-index: 15;
+  padding: 10px;
+  -webkit-box-shadow: 0px 1px 1px black inset;
+          box-shadow: 0px 1px 1px black inset;
+}
+
+.Blender {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 16;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  opacity: 0.9;
+}
+
+.Content {
+  z-index: 20;
+}
+
+.Links {
+  text-decoration: none;
+  color: #828282;
+  text-shadow: 1px 1px 1px black;
+}
+
+.Text {
+  color: #828282;
+  text-shadow: 1px 1px 1px black;
+}
+
+.Icon {
+  margin: 10px;
+}
+/*# sourceMappingURL=Footer.module.css.map */

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 
+import { useDispatch } from "react-redux";
+
 import GoogleMaps from "components/GoogleMaps/GoogleMaps";
 
 import axios from "axios";
+
+import { setAlert } from "store/alertReducer";
 
 // material-ui components
 import Grid from "@mui/material/Grid";
@@ -11,7 +15,6 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 
 import ClearIcon from "@mui/icons-material/Clear";
@@ -50,6 +53,8 @@ const MapView = () => {
 
   const { t } = useTranslation();
 
+  const dispatch = useDispatch();
+
   const fetchAddress = async (coordinates: ICoords, index: number) => {
     try {
       setPickedCoordinates((oldState) => [...oldState, coordinates]);
@@ -57,7 +62,6 @@ const MapView = () => {
       const resData = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coord}&language=de&key=${GOOGLE_MAPS_KEY}`
       );
-      console.log("RES_DATA: ", resData);
       const address: IAddress = {
         index: index,
         formattedAddress: resData.data.results[0].formatted_address,
@@ -67,9 +71,13 @@ const MapView = () => {
       };
       const newpickedAddresses = [...pickedAddresses, address];
       setPickedAddresses(newpickedAddresses);
-      console.log("PICKED_ADDRESSES: ", newpickedAddresses);
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      dispatch(
+        setAlert({
+          title: t("OH_NO"),
+          content: t("SOMETHING_WRONG") + ": " + err.toString(),
+        })
+      );
     }
   };
 

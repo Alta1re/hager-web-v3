@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 // layout component
 import Layout from "Layout/Layout";
@@ -30,16 +30,17 @@ declare module "@mui/material/styles" {
 }
 
 function App() {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<"light" | "dark">("dark");
 
-  const themeMode = React.useMemo(
-    () => ({
-      toggleTheme: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    []
-  );
+  const themeMode: { toggleTheme: () => void; mode: "light" | "dark" } =
+    useMemo(() => {
+      return {
+        toggleTheme: () => {
+          setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        },
+        mode: mode,
+      };
+    }, [mode]);
 
   const theme = createTheme({
     status: {

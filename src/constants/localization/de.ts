@@ -35,12 +35,29 @@ export const de = {
     APP_DEV: "Appentwicklung",
     WE_DEV_APPS: "Wir entwickeln Apps fürs Web und Mobil",
     ABOUT_ME:
-      "Mein Name ist Sven Hager, seit Oktober 2018 freiberuflich, selbständiger, Web-/Appentwickler. Als learnaholic halte ich mich stets auf dem neuesten Stand und entwickle, soweit möglich und erwünscht immer nach dem aktuellen Stand der Technik. Mit meinen umfangreichen Kenntnissen und Erfahrungen im Javascript/Typescript basierten Front- und Backendbereich unterstütze ich Sie gern mit bis zu 20 Wochenstunden.",
+      "Mein Name ist Sven Hager, seit Oktober 2019 freiberuflich, selbständiger, Web-/Appentwickler. Als autodidakt und learnaholic halte ich mich stets auf dem neuesten Stand und entwickle, soweit möglich und erwünscht immer nach dem aktuellen Stand der Technik. Mit meinen umfangreichen Kenntnissen und Erfahrungen im Javascript/Typescript basierten Front- und Backendbereich unterstütze ich Sie gern mit bis zu 20 Wochenstunden.",
     SKILLS:
       "Zu meinen Schwerpunkten gehört der sogenannte MERN-Stack, also MongoDB, ExpressJS, ReactJS und NodeJS. Außerdem für native iOS- und Android-Apps: React-Native. Die gängigen Tools wie Redux(Toolkit), React-Router, Axios, i18n, google-maps-api, ..., gehören selbstverständlich ebenfalls zu meinen täglichen Begleitern.",
     MORE_SKILLS:
       "Zusätzlich verfüge ich über erste Erfahrungen im Unit-Testing mit React-Testing-Library und Jest und erweitere gerade meine Erfahrungen zu Test-Driven-Development (TDD).",
     DRAWER_MENU:
       "Über das Drawermenü können Sie auf weitere Seiten navigieren, wo sie einige Beispiele zu meinen bereits (mehrfach) umgesetzen Features finden.",
+    REPOSITORY:
+      "Um sich ein Bild von meinem Code machen zu können, finden Sie den gesamten Quellcode dieser Seite unter folgendem Link:",
+    LINKS: "Links",
+    IMPRINT: "Impressum",
+    PRIVACY: "Datenschutz",
+    SOCIAL_MEDIA: "Social media",
+    REFERENCES: "Referenzen",
+    MOBILE_APPS: "iOS/Android Apps",
+    LOGOUT: "Abmelden",
+    HELLO: "Hallo",
+    SUCCESS: "Erfolgreich",
+    LOGGED_OUT: "Sie sind ausgeloggt.",
+    OH_NO: "Oh nein",
+    ATTENTION: "Achtung",
+    LOGGED_IN: "Login erfolgreich",
+    SIGNED_UP: "Registrierung erfolgreich",
+    REACT_APPLICATION: "React Anwendung",
   },
 };
