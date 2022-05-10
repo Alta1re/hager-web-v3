@@ -44,7 +44,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const GOOGLE_MAPS_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+const GOOGLE_MAPS_KEY = process.env.REACT_APP_GOOGLE_MAPS_GEO_KEY;
 
 const MapView = () => {
   const [pickedAddresses, setPickedAddresses] = useState<Array<IAddress>>([]);

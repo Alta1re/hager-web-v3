@@ -60,5 +60,11 @@ export const en = {
     LOGGED_IN: "Login successful",
     SIGNED_UP: "Signup successful",
     REACT_APPLICATION: "React application",
+    COOKIE_HEADING:
+      "This site uses so-called cookies to increase the user-experience",
+    COOKIE_SECOND:
+      "If you do not agree to this, it may limit your user experience",
+    AGREE: "Agree",
+    DENY: "Deny",
   },
 };

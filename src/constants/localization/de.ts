@@ -59,5 +59,11 @@ export const de = {
     LOGGED_IN: "Login erfolgreich",
     SIGNED_UP: "Registrierung erfolgreich",
     REACT_APPLICATION: "React Anwendung",
+    COOKIE_HEADING:
+      "Diese Seite verwendet sogenannte Cookies um die Benutzerfreundlichkeit zu erhöhen",
+    COOKIE_SECOND:
+      "Wenn Sie damit nicht einverstanden sind, kann das Ihre Benutzererfahrung einschränken",
+    AGREE: "Einverstanden",
+    DENY: "Ablehnen",
   },
 };

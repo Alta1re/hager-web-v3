@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
+import CookieConsent from "react-cookie-consent";
+
 // i18n
 import { useTranslation } from "utils/i18n";
 
@@ -14,6 +16,8 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+
+import { initializeApp, firebaseConfig, getAnalytics } from "utils/firebase";
 
 // redux
 import { useDispatch } from "react-redux";
@@ -52,12 +56,15 @@ import ThemeSwitch from "components/CustomButtons/ThemeSwitch";
 import LanguageSwitch from "components/CustomButtons/LanguageSwitch";
 
 import classes from "./Drawer.module.css";
+import { FirebaseApp } from "firebase/app";
 
 export default function Drawer() {
   const [state, setState] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
   const [signUpOpen, setSignUpOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [initialized, setInitialized] = useState(false);
+  const [application, setApplication] = useState<FirebaseApp | undefined>();
 
   const { toggleTheme, mode } = useContext(ThemeContext);
 
@@ -73,41 +80,56 @@ export default function Drawer() {
     setState(open);
   };
 
-  const auth = getAuth();
+  const auth = initialized ? getAuth() : null;
+
+  const startAnalyticsHandler = () => {
+    const analytics = getAnalytics(application);
+    console.log("ANALYTICS: ", analytics);
+  };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setSignedIn(true);
-      } else {
-        setSignedIn(false);
-      }
-    }); // eslint-disable-next-line
-  }, []);
+    const app = initializeApp(firebaseConfig);
+    setInitialized(true);
+    setApplication(app);
+  }, [firebaseConfig]);
+
+  useEffect(() => {
+    if (initialized && auth) {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setSignedIn(true);
+        } else {
+          setSignedIn(false);
+        }
+      });
+    }
+  }, [initialized, auth]);
 
   const onSubmitSignupHandler = async (data: {
     name: string;
     email: string;
     password: string;
   }) => {
-    try {
-      await createUserWithEmailAndPassword(auth, data.email, data.password);
+    if (initialized && auth) {
+      try {
+        await createUserWithEmailAndPassword(auth, data.email, data.password);
 
-      if (auth.currentUser) {
-        updateProfile(auth.currentUser, { displayName: data.name });
+        if (auth.currentUser) {
+          updateProfile(auth.currentUser, { displayName: data.name });
+        }
+
+        setSignUpOpen(false);
+        dispatch(setAlert({ title: t("SUCCESS"), content: t("SIGNED_UP") }));
+        onSubmitLoginHandler({ email: data.email, password: data.password });
+      } catch (error: any) {
+        const errorCode = error?.code;
+        const errorMessage = error?.message;
+        dispatch(
+          setAlert({ title: t("OH_NO") + "!", content: t("SOMETHING_WRONG") })
+        );
+        console.log("SIGNUP_ERROR: ", errorCode, ": ", errorMessage);
+        // ..
       }
-
-      setSignUpOpen(false);
-      dispatch(setAlert({ title: t("SUCCESS"), content: t("SIGNED_UP") }));
-      onSubmitLoginHandler({ email: data.email, password: data.password });
-    } catch (error: any) {
-      const errorCode = error?.code;
-      const errorMessage = error?.message;
-      dispatch(
-        setAlert({ title: t("OH_NO") + "!", content: t("SOMETHING_WRONG") })
-      );
-      console.log("SIGNUP_ERROR: ", errorCode, ": ", errorMessage);
-      // ..
     }
   };
 
@@ -115,30 +137,34 @@ export default function Drawer() {
     email: string;
     password: string;
   }) => {
-    try {
-      await signInWithEmailAndPassword(auth, data.email, data.password);
-      setLoginOpen(false);
-      dispatch(setAlert({ title: t("SUCCESS"), content: t("LOGGED_IN") }));
-    } catch (error: any) {
-      const errorCode = error?.code;
-      const errorMessage = error?.message;
-      dispatch(
-        setAlert({ title: t("OH_NO") + "!", content: t("SOMETHING_WRONG") })
-      );
+    if (initialized && auth) {
+      try {
+        await signInWithEmailAndPassword(auth, data.email, data.password);
+        setLoginOpen(false);
+        dispatch(setAlert({ title: t("SUCCESS"), content: t("LOGGED_IN") }));
+      } catch (error: any) {
+        const errorCode = error?.code;
+        const errorMessage = error?.message;
+        dispatch(
+          setAlert({ title: t("OH_NO") + "!", content: t("SOMETHING_WRONG") })
+        );
 
-      console.log("SIGNUP_ERROR: ", errorCode, ": ", errorMessage);
+        console.log("SIGNUP_ERROR: ", errorCode, ": ", errorMessage);
+      }
     }
   };
 
   const onLogoutHandler = async () => {
-    try {
-      await signOut(auth);
-      dispatch(setAlert({ title: t("SUCCESS"), content: t("LOGGED_OUT") }));
-    } catch (error: any) {
-      dispatch(
-        setAlert({ title: t("OH_NO") + "!", content: t("SOMETHING_WRONG") })
-      );
-      console.log("SIGNOUT_ERROR: ", error);
+    if (initialized && auth) {
+      try {
+        await signOut(auth);
+        dispatch(setAlert({ title: t("SUCCESS"), content: t("LOGGED_OUT") }));
+      } catch (error: any) {
+        dispatch(
+          setAlert({ title: t("OH_NO") + "!", content: t("SOMETHING_WRONG") })
+        );
+        console.log("SIGNOUT_ERROR: ", error);
+      }
     }
   };
 
@@ -179,7 +205,7 @@ export default function Drawer() {
           </ListItem>
         ) : (
           <>
-            {auth.currentUser?.displayName && (
+            {auth && auth.currentUser?.displayName && (
               <Typography variant="body1" style={{ textAlign: "center" }}>
                 {t("HELLO") + " " + auth.currentUser?.displayName + "!"}
               </Typography>
@@ -240,6 +266,23 @@ export default function Drawer() {
           <Login onSubmit={onSubmitLoginHandler} />
         </DialogContent>
       </Dialog>
+      <CookieConsent
+        location="bottom"
+        buttonText={t("AGREE")}
+        declineButtonText={t("DENY")}
+        cookieName="myAwesomeCookieName2"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        expires={150}
+        onAccept={startAnalyticsHandler}
+        onDecline={() => console.log("Declined")}
+        enableDeclineButton
+      >
+        {t("COOKIE_HEADING")}
+        <span style={{ fontSize: "10px", display: "block" }}>
+          {t("COOKIE_SECOND")}
+        </span>
+      </CookieConsent>
       <>
         <BurgerButton toggleDrawer={toggleDrawer} />
         <SwipeableDrawer

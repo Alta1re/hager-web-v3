@@ -40,7 +40,7 @@ const Welcome = () => {
             hager-web
           </Typography>
           <Typography
-            variant="h3"
+            variant="h2"
             color="white"
             sx={{
               textShadow: "1px 1px 1px black",
@@ -78,23 +78,23 @@ const Welcome = () => {
                   />
                 </div>
                 <div>
-                  <Typography align="left" variant="h6">
+                  <Typography align="left" variant="body1">
                     {t("ABOUT_ME")}
                   </Typography>
                   <Divider />
-                  <Typography align="left" variant="h6">
+                  <Typography align="left" variant="body1">
                     {t("SKILLS")}
                   </Typography>
                   <Divider />
-                  <Typography align="left" variant="h6">
+                  <Typography align="left" variant="body1">
                     {t("MORE_SKILLS")}
                   </Typography>
                   <Divider />
-                  <Typography align="left" variant="h6">
+                  <Typography align="left" variant="body1">
                     {t("DRAWER_MENU")}
                   </Typography>
                   <Divider />
-                  <Typography align="left" variant="h6">
+                  <Typography align="left" variant="body1">
                     {t("REPOSITORY")}
                   </Typography>
                   <a
@@ -126,7 +126,12 @@ const Welcome = () => {
                       size="6x"
                       color="#f0db4f"
                     />
-                    <img src={tsLogo} width="84px" alt="typescript-logo" />
+                    <img
+                      src={tsLogo}
+                      width="84px"
+                      height="96px"
+                      alt="typescript-logo"
+                    />
                     <FontAwesomeIcon
                       icon={brands("node")}
                       size="6x"
