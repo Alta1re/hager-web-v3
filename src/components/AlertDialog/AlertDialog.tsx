@@ -39,7 +39,7 @@ export default function AlertDialog(props: AlertProps) {
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">{props.title}</DialogTitle>
-      <DialogContent>
+      <DialogContent sx={{ minWidth: window.screen.availWidth * 0.2 }}>
         <DialogContentText id="alert-dialog-description">
           {props.content}
         </DialogContentText>

@@ -13,9 +13,13 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
+import CardActions from "@mui/material/CardActions";
 
 import classes from "./References.module.css";
 import { Typography } from "@mui/material";
+
+import AppStoreBadgeWhite from "assets/icons/App_Store_Badge_DE_wht.svg";
+import AppStoreBadgeBlack from "assets/icons/App_Store_Badge_DE_blk.svg";
 
 const References = () => {
   const { t } = useTranslation();
@@ -50,6 +54,14 @@ const References = () => {
                 )}
               </div>
             </CardContent>
+            <CardActions>
+              <img
+                src={AppStoreBadgeWhite}
+                width="200px"
+                alt="AppStoreBadge"
+                style={{ margin: "10px auto" }}
+              />
+            </CardActions>
           </Card>
         </Grid>
         <Grid item xs={12} md={12} lg={12}>

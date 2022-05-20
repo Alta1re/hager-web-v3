@@ -66,5 +66,6 @@ export const en = {
       "If you do not agree to this, it may limit your user experience",
     AGREE: "Agree",
     DENY: "Deny",
+    KEEP_LOGGED_IN: "Keep me loged in",
   },
 };

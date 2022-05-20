@@ -65,5 +65,6 @@ export const de = {
       "Wenn Sie damit nicht einverstanden sind, kann das Ihre Benutzererfahrung einschränken",
     AGREE: "Einverstanden",
     DENY: "Ablehnen",
+    KEEP_LOGGED_IN: "Eingeloggt bleiben",
   },
 };
