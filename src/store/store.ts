@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import alertSlice from "store/alertReducer";
+import listReducer from "store/listReducer";
 
 export const store = configureStore({
   reducer: {
     alert: alertSlice,
+    list: listReducer,
   },
 });
 

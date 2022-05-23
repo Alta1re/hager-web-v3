@@ -245,6 +245,14 @@ export default function Drawer() {
             {t("REFERENCES")}
           </Link>
         </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <AccountTreeIcon />
+          </ListItemIcon>
+          <Link className={classes.Link} to="/dragdrop">
+            DragNDrop
+          </Link>
+        </ListItem>
       </List>
       <Divider />
       <div className={classes.SwitchContainer}>

@@ -1,0 +1,23 @@
+.Container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ListContainer {
+  box-sizing: border-box;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.DragOver {
+  border-bottom: 20px solid grey;
+  box-sizing: border-box;
+
+  li {
+    list-style-type: none;
+  }
+}

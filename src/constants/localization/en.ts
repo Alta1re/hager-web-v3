@@ -67,5 +67,10 @@ export const en = {
     AGREE: "Agree",
     DENY: "Deny",
     KEEP_LOGGED_IN: "Keep me loged in",
+    TITLE: "Title",
+    ADD_LIST: "Add a list",
+    ADD_ITEM: "Add item",
+    CONTENT: "Content",
+    DRAG_N_DROP: "Drag N Drop",
   },
 };

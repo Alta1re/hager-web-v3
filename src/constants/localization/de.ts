@@ -66,5 +66,10 @@ export const de = {
     AGREE: "Einverstanden",
     DENY: "Ablehnen",
     KEEP_LOGGED_IN: "Eingeloggt bleiben",
+    TITLE: "Titel",
+    ADD_LIST: "Liste hinzufügen",
+    ADD_ITEM: "Item hinzufügen",
+    CONTENT: "Inhalt",
+    DRAG_N_DROP: "Drag N Drop",
   },
 };
