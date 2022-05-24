@@ -30,16 +30,15 @@ const Welcome = () => {
       <Grid container sx={{ zIndex: 2 }} spacing={5} alignContent="flex-start">
         <Grid item xs={12}>
           <Typography
+            className={classes.Heading}
             variant="h1"
             color="white"
-            sx={{
-              textShadow: "1px 1px 1px black",
-              fontFamily: "Charmonman-bold",
-            }}
+            sx={{ fontFamily: "Charmonman-bold" }}
           >
             hager-web
           </Typography>
           <Typography
+            className={classes.SubHeading}
             variant="h2"
             color="white"
             sx={{
@@ -50,6 +49,7 @@ const Welcome = () => {
             {t("APP_DEV")}
           </Typography>
           <Typography
+            className={classes.SubSubHeading}
             variant="h3"
             color="white"
             sx={{
@@ -63,8 +63,8 @@ const Welcome = () => {
           <Card>
             <CardHeader title={t("WELCOME")} />
             <CardContent>
-              <div className={classes.WelcomeContentContainer}>
-                <div>
+              <Grid container className={classes.WelcomeContentContainer}>
+                <Grid item xs={12} sm={7} md={5} lg={3}>
                   <img
                     src={mePortrait}
                     alt="portrait of site owner"
@@ -76,8 +76,8 @@ const Welcome = () => {
                       borderRadius: "125px",
                     }}
                   />
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={12} sm={12} md={7} lg={9}>
                   <Typography align="left" variant="body1">
                     {t("ABOUT_ME")}
                   </Typography>
@@ -138,8 +138,8 @@ const Welcome = () => {
                       color="#68a063"
                     />
                   </div>
-                </div>
-              </div>
+                </Grid>
+              </Grid>
             </CardContent>
           </Card>
         </Grid>

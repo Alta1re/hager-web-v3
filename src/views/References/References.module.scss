@@ -9,3 +9,34 @@
   padding: 70px;
   padding-bottom: 250px;
 }
+
+@media screen and (max-width: 600px) {
+  .Heading {
+    font-size: 4rem !important;
+  }
+  .SubHeading {
+    font-size: 3rem !important;
+  }
+
+  .SubSubHeading {
+    font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Heading {
+    font-size: 3rem !important;
+  }
+  .SubHeading {
+    font-size: 2rem !important;
+  }
+
+  .SubSubHeading {
+    font-size: 1rem !important;
+  }
+
+  .Container {
+    padding: 20px;
+    padding-bottom: 250px;
+  }
+}

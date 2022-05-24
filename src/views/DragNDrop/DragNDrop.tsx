@@ -46,6 +46,7 @@ const DragNDrop = () => {
       <Grid container spacing={5}>
         <Grid item xs={12}>
           <Typography
+            className={classes.Heading}
             sx={{
               fontFamily: "Charmonman-bold",
               textShadow: "1px 1px 1px black",
