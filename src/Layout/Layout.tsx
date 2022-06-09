@@ -8,6 +8,7 @@ import Imprint from "views/Imprint/Imprint";
 import Privacy from "views/Privacy/Privacy";
 import References from "views/References/References";
 import DragNDrop from "views/DragNDrop/DragNDrop";
+import Cards from "views/Cards/Cards";
 
 // custom components
 import Footer from "components/Footer/Footer";
@@ -21,6 +22,7 @@ const Layout = () => {
       <BrowserRouter>
         <Drawer />
         <Routes>
+          <Route path="/cards" element={<Cards />} />
           <Route path="/dragdrop" element={<DragNDrop />} />
           <Route path="/references" element={<References />} />
           <Route path="/privacy" element={<Privacy />} />
