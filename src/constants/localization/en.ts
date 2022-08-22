@@ -72,5 +72,6 @@ export const en = {
     ADD_ITEM: "Add item",
     CONTENT: "Content",
     DRAG_N_DROP: "Drag N Drop",
+    PROJECTS: "Projects",
   },
 };

@@ -71,5 +71,6 @@ export const de = {
     ADD_ITEM: "Item hinzufügen",
     CONTENT: "Inhalt",
     DRAG_N_DROP: "Drag N Drop",
+    PROJECTS: "Projekte",
   },
 };

@@ -91,7 +91,7 @@ export default function Drawer() {
     const app = initializeApp(firebaseConfig);
     setInitialized(true);
     setApplication(app);
-  }, [firebaseConfig]);
+  }, []);
 
   useEffect(() => {
     if (initialized && auth) {
@@ -251,6 +251,14 @@ export default function Drawer() {
           </ListItemIcon>
           <Link className={classes.Link} to="/dragdrop">
             DragNDrop
+          </Link>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <AccountTreeIcon />
+          </ListItemIcon>
+          <Link className={classes.Link} to="/projects/projects">
+            {t("PROJECTS")}
           </Link>
         </ListItem>
       </List>

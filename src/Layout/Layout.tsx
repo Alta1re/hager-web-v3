@@ -9,6 +9,9 @@ import Privacy from "views/Privacy/Privacy";
 import References from "views/References/References";
 import DragNDrop from "views/DragNDrop/DragNDrop";
 import Cards from "views/Cards/Cards";
+import Projects from "views/Projects/Projects";
+import ProProjects from "views/Projects/Projects/Projects";
+import Ressources from "views/Projects/Ressources/Ressources";
 
 // custom components
 import Footer from "components/Footer/Footer";
@@ -22,6 +25,10 @@ const Layout = () => {
       <BrowserRouter>
         <Drawer />
         <Routes>
+          <Route path="/projects" element={<Projects />}>
+            <Route path="ressources" element={<Ressources />} />
+            <Route path="projects" element={<ProProjects />} />
+          </Route>
           <Route path="/cards" element={<Cards />} />
           <Route path="/dragdrop" element={<DragNDrop />} />
           <Route path="/references" element={<References />} />
