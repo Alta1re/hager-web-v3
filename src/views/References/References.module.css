@@ -1,9 +1,6 @@
 .Container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background-image: url("assets/images/backgrounds/wave-81840.jpg");
   background-position: center;
   background-size: cover;
@@ -24,7 +21,6 @@
     font-size: 2rem !important;
   }
 }
-
 @media screen and (max-width: 400px) {
   .Heading {
     font-size: 3rem !important;
@@ -39,5 +35,4 @@
     padding: 20px;
     padding-bottom: 250px;
   }
-}
-/*# sourceMappingURL=References.module.css.map */
+}/*# sourceMappingURL=References.module.css.map */

@@ -1,18 +1,11 @@
 .Container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 20px;
   padding-bottom: 250px;
   background-image: linear-gradient(30deg, #808080, #a0a0a0, #c0c0c0, #e0e0e0, #c0c0c0, #a0a0a0, #808080);
 }
 
 .ERecht {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-/*# sourceMappingURL=Privacy.module.css.map */
+  align-self: flex-end;
+}/*# sourceMappingURL=Privacy.module.css.map */

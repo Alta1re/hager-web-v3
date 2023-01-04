@@ -3,19 +3,14 @@
   padding-bottom: 400px;
   background-image: linear-gradient(30deg, #404040, #606060, #808080, #a0a0a0, #808080, #606060, #404040);
   min-height: 100vh;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .Form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   padding: 20px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .LeftControls {
@@ -43,7 +38,6 @@
     font-size: 2rem !important;
   }
 }
-
 @media screen and (max-width: 400px) {
   .Heading {
     font-size: 3rem !important;
@@ -58,5 +52,4 @@
     padding: 20px;
     padding-bottom: 250px;
   }
-}
-/*# sourceMappingURL=DragNDrop.module.css.map */
+}/*# sourceMappingURL=DragNDrop.module.css.map */

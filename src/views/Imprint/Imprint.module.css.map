@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,KAAK;EACrB,gBAAgB,EAAE,qFASjB;CACF;;AAED,AAAA,OAAO,CAAC;EACN,UAAU,EAAE,QAAQ;CACrB",
-    "sources": [
-        "Imprint.module.scss"
-    ],
-    "names": [],
-    "file": "Imprint.module.css"
-}
+{"version":3,"sources":["Imprint.module.scss","Imprint.module.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,sBAAA;EACA,aAAA;EACA,qBAAA;EACA,uGAAA;ACCF;;ADWA;EACE,oBAAA;ACRF","file":"Imprint.module.css"}

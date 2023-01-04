@@ -1,9 +1,6 @@
 .Container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background-image: url("assets/images/backgrounds/testing_code_1920.jpeg");
   background-position: center;
   background-size: cover;
@@ -24,20 +21,13 @@
 }
 
 .WelcomeContentContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .Logos {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .GithubLink {
@@ -66,7 +56,6 @@
     font-size: 2rem !important;
   }
 }
-
 @media screen and (max-width: 400px) {
   .Heading {
     font-size: 3rem !important;
@@ -81,5 +70,4 @@
     padding: 20px;
     padding-bottom: 250px;
   }
-}
-/*# sourceMappingURL=Welcome.module.css.map */
+}/*# sourceMappingURL=Welcome.module.css.map */

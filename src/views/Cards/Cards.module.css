@@ -1,13 +1,9 @@
 .Container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   min-height: 100vh;
   width: 100%;
   padding-top: 200px;
   padding-bottom: 200px;
   background-image: linear-gradient(30deg, #404040, #606060, #808080, #a0a0a0, #808080, #606060, #404040);
-}
-/*# sourceMappingURL=Cards.module.css.map */
+}/*# sourceMappingURL=Cards.module.css.map */

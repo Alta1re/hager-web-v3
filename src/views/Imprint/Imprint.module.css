@@ -1,18 +1,11 @@
 .Container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 20px;
   padding-bottom: 250px;
   background-image: linear-gradient(30deg, #404040, #606060, #808080, #a0a0a0, #808080, #606060, #404040);
 }
 
 .ERecht {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-/*# sourceMappingURL=Imprint.module.css.map */
+  align-self: flex-end;
+}/*# sourceMappingURL=Imprint.module.css.map */

@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,eAAe,EAAE,IAAI;EACrB,KAAK,EAAE,OAAO;CACf;;AAED,AAAA,gBAAgB,CAAC;EACf,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,YAAY;EAC7B,WAAW,EAAE,MAAM;CACpB",
-    "sources": [
-        "Drawer.module.scss"
-    ],
-    "names": [],
-    "file": "Drawer.module.css"
-}
+{"version":3,"sources":["Drawer.module.scss","Drawer.module.css"],"names":[],"mappings":"AAAA;EACE,qBAAA;EACA,cAAA;ACCF;;ADEA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;ACCF","file":"Drawer.module.css"}
